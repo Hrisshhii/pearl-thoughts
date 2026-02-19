@@ -1,65 +1,95 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
+"use client";
+import { useState } from "react";
 
-export default function Home() {
+export default function LoginPage() {
+  const [remember, setRemember] = useState(false);
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
+  const [loading, setLoading] = useState(false);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+        
+        {/* Logo */}
+        <div className="flex justify-center mb-6">
+          <div className="w-32 h-32 bg-gray-200 rounded-2xl flex items-center justify-center text-xl font-semibold">
+            Your Logo
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+        {/* Title */}
+        <h2 className="text-2xl font-bold mb-6">Login</h2>
+
+        {/* Input */}
+        <div className="space-y-4">
+          <input
+            type="text"
+            placeholder="Login with Email"
+            value={email}
+            onChange={(e)=>setEmail(e.target.value)}
+            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
+          />
+          <input
+            type="password"
+            placeholder="Enter Password"
+            value={password}
+            onChange={(e)=>setPassword(e.target.value)}
+            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
+          />
+
+          <div className="flex items-center justify-between text-sm">
+            <label className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                checked={remember}
+                onChange={() => setRemember(!remember)}
+              />
+              Remember Me
+            </label>
+
+            <button className="text-red-500 hover:underline">
+              Forgot Password
+            </button>
+          </div>
+
+          {/* Login Button */}
+          <button 
+           onClick={()=>{
+            setLoading(true);
+            setTimeout(()=>setLoading(false),1500);
+           }}
+           className="w-full bg-cyan-600 text-white py-3 rounded-lg hover:bg-cyan-700 transition">
+            {loading?"Logging in...":"Login"}
+          </button>
+
+          {/* Divider */}
+          <div className="flex items-center gap-3 text-gray-400 text-sm">
+            <div className="flex-1 h-px bg-gray-300" />
+            Or login with
+            <div className="flex-1 h-px bg-gray-300" />
+          </div>
+
+          {/* Google */}
+          <button className="w-full border py-3 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-50 transition">
+            <img
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              alt="Google"
+              className="w-5 h-5"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            Continue with Google
+          </button>
         </div>
-      </main>
+
+        {/* Sign Up */}
+        <p className="text-center text-sm mt-6 text-gray-500">
+          {`Don't have an account?`}{" "}
+          <span className="text-cyan-600 cursor-pointer hover:underline">
+            Sign Up
+          </span>
+        </p>
+      </div>
     </div>
   );
 }

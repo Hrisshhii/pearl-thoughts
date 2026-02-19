@@ -62,8 +62,6 @@ export default function LoginPage() {
           Sign in to your account
         </p>
 
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none" />
-
         <div className="space-y-4">
           {/* Email */}
           <input
@@ -76,22 +74,20 @@ export default function LoginPage() {
 
           {/*Password*/}
           <div className="relative">
-            
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={password}
-              onChange={(e)=>setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition pr-12"
+            <input type={showPassword ? "text" : "password"}
+              placeholder="Password" value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition pr-16"
             />
 
-            <button
-              type="button"
-              onClick={()=>setShowPassword(!showPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition text-sm"
-            >
-              {showPassword ? "Hide" : "Show"}
-            </button>
+            {password && (
+              <button type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-purple-300 transition text-sm font-medium cursor-pointer"
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            )}
           </div>
 
           {/* Remember Me*/}
@@ -116,7 +112,7 @@ export default function LoginPage() {
               setTimeout(()=>setLoading(false), 1500);
             }}
             className={`w-full py-3 rounded-xl font-medium transition ${
-              isValid?"bg-purple-600 hover:bg-purple-700 cursor-pointer":"bg-gray-700 cursor-not-allowed"
+              isValid?"bg-linear-to-r from-purple-600 to-indigo-600 hover:opacity-90 cursor-pointer":"bg-gray-700 cursor-not-allowed"
             }`}
           >
             {loading?"Authenticating...":"Login"}

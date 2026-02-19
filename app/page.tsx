@@ -26,7 +26,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div onMouseMove={handleMouseMove} className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-black px-4 relative overflow-hidden text-white">
+    <div onMouseMove={handleMouseMove} className="min-h-screen flex items-center justify-center bg-linear-to-br from-slate-950 via-slate-900 to-black px-4 relative overflow-hidden text-white">
       {/* Spotlight that follows mouse */}
       <motion.div
         className="pointer-events-none absolute w-75 h-75 rounded-full blur-3xl"

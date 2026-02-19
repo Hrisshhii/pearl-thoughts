@@ -69,7 +69,7 @@ export default function LoginPage() {
             placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+            className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-purple-400 transition"
           />
 
           {/*Password*/}
@@ -77,7 +77,7 @@ export default function LoginPage() {
             <input type={showPassword ? "text" : "password"}
               placeholder="Password" value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition pr-16"
+              className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-purple-400 transition pr-16"
             />
 
             {password && (

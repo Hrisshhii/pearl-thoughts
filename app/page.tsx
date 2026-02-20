@@ -3,8 +3,10 @@
 
 import { useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router=useRouter();
   const [remember,setRemember]=useState(false);
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
@@ -109,7 +111,10 @@ export default function LoginPage() {
             disabled={!isValid||loading}
             onClick={()=>{
               setLoading(true);
-              setTimeout(()=>setLoading(false), 1500);
+              setTimeout(()=>{
+                setLoading(false);
+                router.push("/otp")
+              }, 1500);
             }}
             className={`w-full py-3 rounded-xl font-medium transition ${
               isValid?"bg-linear-to-r from-purple-600 to-indigo-600 hover:opacity-90 cursor-pointer":"bg-gray-700 cursor-not-allowed"
